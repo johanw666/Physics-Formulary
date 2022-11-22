@@ -1,7 +1,10 @@
 % $Id: fysica.tex,v 1.25 2012/07/08 13:33:07 johanw Exp johanw $
 \mag=1000
-\documentstyle[twoside,dutch]{report}
-%\documentstyle[twoside,epsf,dutch]{report}
+\documentclass[twoside]{report}
+\usepackage{amssymb}
+\usepackage[dutch]{babel}
+\usepackage{tikz,tsemlines}
+%\usepackage{hyperref}
 
 \makeatletter
 
@@ -146,11 +149,6 @@ width\@wholewidth}\c@@t\z@
 \newfont{\sfd}{cmssdc10 scaled\magstep0}
 \newfont{\cmu}{cmu10 scaled\magstep0}
 
-\def\jwline#1#2#3#4{%
-\put(#1,#2){\special{em:moveto}}%
-\put(#3,#4){\special{em:lineto}}}
-\def\newpic#1{}
-
 \def\npar{\par\medskip}
 %\def\vec#1{\mbox{\boldmath$#1$\unboldmath}}  % Uncomment this when you don't like the arrows
 \def\rr{\vec{r}}
@@ -212,7 +210,7 @@ width\@wholewidth}\c@@t\z@
 \hrule
 \newpage
 \thispagestyle{empty}
-\copyright~1994, 2012~~J.C.A. Wevers\hfill Versie: 8 juli 2012
+\copyright~1994, 2022~~J.C.A. Wevers\hfill Versie: 22 november 2022
 \npar
 \hrule
 \par
@@ -230,11 +228,8 @@ auteur, Johan Wevers\linebreak
 Het is tevens te vinden op het WWW op {\tt http://www.xs4all.nl/\~{}johanw/index.html}.
 Hier zijn tevens Postscript en PDF versies te vinden.
 \npar
-Het Fysisch Formularium werd gemaakt met behulp van te\TeX\ en \LaTeX\ versie 2.09.
+Het Fysisch Formularium werd gemaakt met behulp van MiK\TeX.
 \npar
-Het kan voorkomen dat Uw implementatie van \LaTeX\ problemen heeft met het
-Fysisch Formularium. De meest waarschijnlijke bron van problemen is het
-gebruik van grote bezier curven of de em\TeX\ specials in sommige figuren.
 Indien U de layout waarin vectoren vet weergegeven worden prefereert kunt U
 het commentaar voor het alternatieve {\tt $\backslash$vec} commando in de
 \TeX\ file weghalen en hercompileren.
@@ -268,39 +263,39 @@ Johan Wevers
 {\bf Naam}&{\bf Symbool}&{\bf Waarde}&{\bf Eenheid}\\
 \hline
 \hline
-Getal $\pi$                    &$\pi$&3,14159265358979323846&\\
-Getal e                        &e    &2,71828182845904523536&\\
-Constante van Euler&\multicolumn{3}{|l||}{$\gamma=\lim\limits_{n\rightarrow\infty}\left(\sum\limits_{k=1}^n 1/k-\ln(n)\right)=0,5772156649$}\\
+Getal $\pi$                    &$\pi$&3,14159265358979323846...&\\
+Getal e                        &e    &2,71828182845904523536...&\\
+Constante van Euler&\multicolumn{3}{|l||}{$\gamma=\lim\limits_{n\rightarrow\infty}\left(\sum\limits_{k=1}^n 1/k-\ln(n)\right)=0,5772156649...$}\\
 \hline
-Elementaire lading             &$e$&$1,60217733\cdot10^{-19}$&C\rule{0pt}{13pt}\\
-Gravitatieconstante            &$G,\kappa$&$6,67259\cdot10^{-11}$&m$^3$kg$^{-1}$s$^{-2}$\\
+Elementaire lading             &$e$&$1,602176634\cdot10^{-19}$&C\rule{0pt}{13pt}\\
+Gravitatieconstante            &$G,\kappa$&$6,67430(15)\cdot10^{-11}$&m$^3$kg$^{-1}$s$^{-2}$\\
 Fijnstructuurconstante         &$\alpha=e^2/2hc\varepsilon_0$&$\approx1/137$&\\
 Lichtsnelheid in vacu\"um      &$c$&$2,99792458\cdot10^8$&m/s (def)\\
-Permittiviteit van het vacu\"um&$\varepsilon_0$&$8,854187\cdot10^{-12}$&F/m\\
+Permittiviteit van het vacu\"um&$\varepsilon_0$&$8,8541878128(13)\cdot10^{-12}$&F/m\\
 Permeabiliteit van het vacu\"um&$\mu_0$&$4\pi\cdot10^{-7}$&H/m\\
 $(4\pi\varepsilon_0)^{-1}$     &&$8,9876\cdot10^9$&Nm$^2$C$^{-2}$\\
 \hline
-Constante van Planck           &$h$&$6,6260755\cdot10^{-34}$&Js\rule{0pt}{13pt}\\
-Constante van Dirac            &$\hbar=h/2\pi$&$1,0545727\cdot10^{-34}$&Js\\
-Bohrmagneton                   &$\mu_{\rm B}=e\hbar/2m_{\rm e}$&$9,2741\cdot10^{-24}$&Am$^2$\\
-Bohrstraal                     &$a_0$&$0,52918$&\AA\\
-Rydbergconstante               &$Ry$&13,595&eV\\
-Comptongolflengte elektron     &$\lambda_{\rm Ce}=h/\me c$&$2,2463\cdot10^{-12}$&m\\
-Comptongolflengte proton       &$\lambda_{\rm Cp}=h/m_{\rm p}c$&$1,3214\cdot10^{-15}$&m\\
+Constante van Planck           &$h$&$6,62607015\cdot10^{-34}$&Js\rule{0pt}{13pt}\\
+Constante van Dirac            &$\hbar=h/2\pi$&$1,054571817\cdot10^{-34}$&Js\\
+Bohrmagneton                   &$\mu_{\rm B}=e\hbar/2m_{\rm e}$&$9,2740100783(28)\cdot10^{-24}$&Am$^2$\\
+Bohrstraal                     &$a_0$&$0,529177210903(80)$&\AA\\
+Rydbergconstante               &$Ry$&13,605693122994(26)&eV\\
+Comptongolflengte elektron     &$\lambda_{\rm Ce}=h/\me c$&$2,42631023867(73)\cdot10^{-12}$&m\\
+Comptongolflengte proton       &$\lambda_{\rm Cp}=h/m_{\rm p}c$&$1,32140985539(40)\cdot10^{-15}$&m\\
 Gereduceerde massa H-atoom     &$\mu_{\rm H}$&$9,1045755\cdot10^{-31}$&kg\\
 \hline
-Constante van Stefan-Boltzmann &$\sigma$&$5,67032\cdot10^{-8}$&Wm$^{-2}$K$^{-4}$\rule{0pt}{13pt}\\
-Constante van Wien             &$k_{\rm W}$&$2,8978\cdot10^{-3}$&mK\\
+Constante van Stefan-Boltzmann &$\sigma$&$5,670374419\cdot10^{-8}$&Wm$^{-2}$K$^{-4}$\rule{0pt}{13pt}\\
+Constante van Wien             &$k_{\rm W}$&$2,897771955...\cdot10^{-3}$&mK\\
 \hline
-Gasconstante                   &$R$&8,31441&J$\cdot$mol$^{-1}\cdot$K$^{-1}$\\
-Getal van Avogadro             &$N_{\rm A}$&$6,0221367\cdot10^{23}$&mol$^{-1}$\\
-Constante van Boltzmann        &$k=R/N_{\rm A}$&$1,380658\cdot10^{-23}$&J/K\\
+Gasconstante                   &$R$&8,31446261815324&J$\cdot$mol$^{-1}\cdot$K$^{-1}$\\
+Getal van Avogadro             &$N_{\rm A}$&$6,02214076\cdot10^{23}$&mol$^{-1}$\\
+Constante van Boltzmann        &$k=R/N_{\rm A}$&$1,380649\cdot10^{-23}$&J/K\\
 \hline
-Massa van het elektron         &$m_{\rm e}$&$9,1093897\cdot10^{-31}$&kg\rule{0pt}{13pt}\\
-Massa van het proton           &$m_{\rm p}$&$1,6726231\cdot10^{-27}$&kg\\
-Massa van het neutron          &$m_{\rm n}$&$1,674954\cdot10^{-27}$&kg\\
-Elementaire massaeenheid       &$m_{\rm u}=\frac{1}{12}m(^{12}_{~6}$C)&$1,6605656\cdot10^{-27}$&kg\\
-Kernmagneton                   &$\mu_{\rm N}$&$5,0508\cdot10^{-27}$&J/T\\
+Massa van het elektron         &$m_{\rm e}$&$9,1093837015(28)\cdot10^{-31}$&kg\rule{0pt}{13pt}\\
+Massa van het proton           &$m_{\rm p}$&$1,67262192369(51)\cdot10^{-27}$&kg\\
+Massa van het neutron          &$m_{\rm n}$&$1,67492749804(95)\cdot10^{-27}$&kg\\
+Elementaire massaeenheid       &$m_{\rm u}=\frac{1}{12}m(^{12}_{~6}$C)&$1,66053906660(50)\cdot10^{-27}$&kg\\
+Kernmagneton                   &$\mu_{\rm N}$&$5,050783699(31\cdot10^{-27}$&J/T\\
 \hline
 Diameter van de Zon            &$D_\odot$&$1392\cdot10^6$&m\rule{0pt}{13pt}\\
 Massa van de Zon               &$M_\odot$&$1,989\cdot10^{30}$&kg\\
@@ -1808,9 +1803,9 @@ h_1=n\frac{m_{11}-1}{m_{12}}~~,~~~h_2=n\frac{m_{22}-1}{m_{12}}
 \bezier{120}(15,5)(10,15)(15,25)
 \bezier{120}(25,5)(30,15)(25,25)
 \put(20,15){\circle*{1}}
-\jwline{10}{1}{16}{15}
-\jwline{13.4}{8.82}{26.5}{21.23}
-\jwline{24}{15}{29.65}{29}
+\emline{10}{1}{1}{16}{15}{2}
+\emline{13.4}{8.82}{3}{26.5}{21.23}{4}
+\emline{24}{15}{5}{29.65}{29}{6}
 \put(24,15){\circle*{1}}
 \put(16,15){\circle*{1}}
 \put(16,18){\makebox(0,0)[cc]{N$_1$}}
@@ -2090,25 +2085,25 @@ Hierin is de term $[1+F\sin^2(\theta)]^{-1}:={\cal A}(\theta)$ de
 \bezier{250}(25,10)(20,30)(25,50)
 \bezier{250}(25,10)(30,30)(25,50)
 \special{em:linewidth 0.5pt}
-\jwline{35.05}{10}{39.94}{50}
-\jwline{39.94}{50}{42}{50}
-\jwline{42}{50}{42}{10}
-\jwline{42}{10}{35.05}{10}
-\jwline{49.94}{10}{56.96}{10}
-\jwline{56.96}{10}{52.07}{50}
-\jwline{52.07}{50}{49.94}{50}
-\jwline{49.94}{50}{49.94}{10}
+\emline{35.05}{10}{0}{39.94}{50}{1}
+\emline{39.94}{50}{2}{42}{50}{3}
+\emline{42}{50}{4}{42}{10}{5}
+\emline{42}{10}{6}{35.05}{10}{7}
+\emline{49.94}{10}{8}{56.96}{10}{9}
+\emline{56.96}{10}{10}{52.07}{50}{11}
+\emline{52.07}{50}{12}{49.94}{50}{13}
+\emline{49.94}{50}{13}{49.94}{10}{14}
 \bezier{250}(70,10)(65,30)(70,50)
 \bezier{250}(70,10)(75,30)(70,50)
-\jwline{70}{50}{75}{50}
-\jwline{75}{50}{75}{10}
-\jwline{75}{10}{70}{10}
+\emline{70}{50}{15}{75}{50}{16}
+\emline{75}{50}{17}{75}{10}{18}
+\emline{75}{10}{19}{70}{10}{20}
 \put(88,10){\framebox(1.91,40)[cc]{}}
 \put(42,15){\rule{0.85\unitlength}{30\unitlength}}
 \put(49,15){\rule{0.85\unitlength}{30\unitlength}}
 \special{em:linewidth 0.25pt}
-\jwline{42}{10}{42}{5.10}
-\jwline{49.94}{10}{49.94}{5.10}
+\emline{42}{10}{21}{42}{5.10}{22}
+\emline{49.94}{23}{10}{49.94}{5.10}{24}
 \put(45,7){\vector(-1,0){2.98}}
 \put(44,7){\vector(1,0){5.96}}
 \put(10,5){\makebox(0,0)[cc]{Bron}}
@@ -2117,41 +2112,41 @@ Hierin is de term $[1+F\sin^2(\theta)]^{-1}:={\cal A}(\theta)$ de
 \put(70,2){\makebox(0,0)[cc]{Focusserende lens}}
 \put(79,6){\makebox(0,0)[lc]{Scherm}}
 \put(12.08,17.02){\vector(3,-1){12.97}}
-\jwline{25.06}{13}{49}{18.93}
-\jwline{49}{18.93}{67.59}{23.61}
-\jwline{67.59}{23.61}{75.04}{25.10}
-\jwline{75.04}{25.10}{88.01}{39.99}
-\jwline{49}{18.93}{42.92}{20.42}
-\jwline{42.92}{20.42}{49}{21.91}
-\jwline{49}{21.91}{43.14}{23.40}
-\jwline{43.14}{23.40}{48.88}{24.88}
-\jwline{48.88}{24.88}{43.14}{26.37}
-\jwline{43.14}{26.37}{48.88}{27.86}
-\jwline{48.88}{27.86}{43.14}{29.35}
-\jwline{43.14}{29.35}{49}{30.84}
-\jwline{49}{30.84}{42.92}{32.33}
-\jwline{42.92}{32.33}{49}{33.82}
-\jwline{49}{33.82}{42.92}{35.31}
-\jwline{42.92}{35.31}{49}{36.80}
-\jwline{49}{36.80}{42.92}{38.28}
-\jwline{42.92}{38.28}{49}{39.77}
-\jwline{49.03}{21.95}{75}{32.29}
-\jwline{75}{32.29}{88.03}{40.04}
-\jwline{49.03}{24.89}{75}{36.52}
-\jwline{75}{36.52}{88.03}{40.04}
-\jwline{49.03}{27.82}{75}{41.22}
-\jwline{75}{41.22}{88.03}{40.04}
-\jwline{49.03}{30.88}{75}{44.04}
-\jwline{75}{44.04}{88.03}{40.04}
-\jwline{49.03}{33.82}{75}{46.97}
-\jwline{75}{46.97}{88.03}{40.04}
-\jwline{49.03}{36.75}{75}{48.97}
-\jwline{75}{48.97}{88.03}{40.04}
+\emline{25.06}{13}{25}{49}{18.93}{26}
+\emline{49}{18.93}{27}{67.59}{23.61}{28}
+\emline{67.59}{23.61}{29}{75.04}{25.10}{30}
+\emline{75.04}{25.10}{31}{88.01}{39.99}{32}
+\emline{49}{18.93}{33}{42.92}{20.42}{34}
+\emline{42.92}{20.42}{35}{49}{21.91}{36}
+\emline{49}{21.91}{37}{43.14}{23.40}{38}
+\emline{43.14}{23.40}{39}{48.88}{24.88}{40}
+\emline{48.88}{24.88}{41}{43.14}{26.37}{42}
+\emline{43.14}{26.37}{43}{48.88}{27.86}{44}
+\emline{48.88}{27.86}{45}{43.14}{29.35}{46}
+\emline{43.14}{29.35}{47}{49}{30.84}{48}
+\emline{49}{30.84}{49}{42.92}{32.33}{50}
+\emline{42.92}{32.33}{51}{49}{33.82}{52}
+\emline{49}{33.82}{53}{42.92}{35.31}{54}
+\emline{42.92}{35.31}{55}{49}{36.80}{56}
+\emline{49}{36.80}{57}{42.92}{38.28}{58}
+\emline{42.92}{38.28}{59}{49}{39.77}{60}
+\emline{49.03}{21.95}{61}{75}{32.29}{62}
+\emline{75}{32.29}{63}{88.03}{40.04}{64}
+\emline{49.03}{24.89}{65}{75}{36.52}{66}
+\emline{75}{36.52}{67}{88.03}{40.04}{68}
+\emline{49.03}{27.82}{69}{75}{41.22}{70}
+\emline{75}{41.22}{71}{88.03}{40.04}{72}
+\emline{49.03}{30.88}{73}{75}{44.04}{74}
+\emline{75}{44.04}{75}{88.03}{40.04}{76}
+\emline{49.03}{33.82}{77}{75}{46.97}{78}
+\emline{75}{46.97}{79}{88.03}{40.04}{80}
+\emline{49.03}{36.75}{81}{75}{48.97}{82}
+\emline{75}{48.97}{83}{88.03}{40.04}{84}
 \special{em:linewidth 0.75pt}
-\jwline{42.11}{12.01}{49.87}{12.01}
-\jwline{49.87}{11.09}{42.11}{11.09}
-\jwline{42.11}{48.97}{49.87}{48.97}
-\jwline{49.87}{48.05}{42.11}{48.05}
+\emline{42.11}{12.01}{85}{49.87}{12.01}{86}
+\emline{49.87}{11.09}{87}{42.11}{11.09}{88}
+\emline{42.11}{48.97}{89}{49.87}{48.97}{90}
+\emline{49.87}{48.05}{91}{42.11}{48.05}{92}
 \end{picture}
 }
 \npar
@@ -3743,17 +3738,17 @@ I(\Omega)=\left|\frac{d\sigma}{d\Omega}\right|=\frac{b}{\sin(\chi)}\Q{b}{\chi}
 \parbox[t]{6cm}{
 \special{em:linewidth 0.4pt}
 \begin{picture}(60,35)
-\jwline{5}{10}{50}{10}
-\jwline{25}{0}{60}{30}
+\emline{5}{10}{0}{50}{10}{1}
+\emline{25}{0}{2}{60}{30}{3}
 \bezier{310}(5,15)(35,15)(55,35)
 \put(7,13){\vector(0,1){2}}
 \put(7,13){\vector(0,-1){3}}
 \put(56,27){\vector(-1,1){4.67}}
 \put(56,27){\vector(1,-1){0}}
-\jwline{37}{10}{31.33}{19.67}
-\jwline{37}{10}{20.33}{16.33}
-\jwline{31}{19}{30}{18.5}
-\jwline{31}{19}{31.5}{18}
+\emline{37}{10}{4}{31.33}{19.67}{5}
+\emline{37}{10}{6}{20.33}{16.33}{7}
+\emline{31}{19}{8}{30}{18.5}{9}
+\emline{31}{19}{10}{31.5}{18}{11}
 \put(45,13){\makebox(0,0)[cc]{$\chi$}}
 \put(37,6){\makebox(0,0)[cc]{M}}
 \put(4,13){\makebox(0,0)[cc]{$b$}}
@@ -4600,9 +4595,9 @@ bandafstand: er wordt dan tevens een fonon opgenomen.
 % fonon
 \put(33,30.5){\line(-1,0){7}}
 \put(22.3,30.5){\vector(-1,0){7}}
-\jwline{22.3}{30.5}{23.225}{32.8}
-\jwline{23.225}{32.8}{25.075}{28.2}
-\jwline{25.075}{28.2}{26}{30.5}
+\emline{22.3}{30.5}{0}{23.225}{32.8}{1}
+\emline{23.225}{32.8}{2}{25.075}{28.2}{3}
+\emline{25.075}{28.2}{4}{26}{30.5}{5}
 \put(36,25){$\omega$}
 \put(23,24){$\Omega$}
 \end{picture}
@@ -4998,9 +4993,9 @@ figuur.
 \put(97,9.89){\makebox(0,0)[lc]{$\ell_{n_3}=\mbox{dim}(\Gamma^{(n_3)})$}}
 \put(97,18.06){\makebox(0,0)[lc]{$\ell_{n_2}=\mbox{dim}(\Gamma^{(n_2)})$}}
 \put(97,21.94){\makebox(0,0)[lc]{$\ell_{n_1}=\mbox{dim}(\Gamma^{(n_1)})$}}
-\jwline{70}{21.94}{55}{15.05}
-\jwline{55}{15.05}{70}{9.89}
-\jwline{70}{18.06}{55}{15.05}
+\emline{70}{21.94}{0}{55}{15.05}{1}
+\emline{55}{15.05}{2}{70}{9.89}{3}
+\emline{70}{18.06}{4}{55}{15.05}{5}
 \end{picture}
 \npar
 \underline{\bf Stelling:}
@@ -6223,7 +6218,7 @@ $\rm W^+$&1&0&0&0&0&0&0&0&$+1$&80220&$\rm W^-$\\
 Z        &1&0&0&0&0&0&0&0&$0$&91187&Z\\
 graviton &2&0&0&0&0&0&0&0&$0$&0&graviton\\
 \hline
-Higgs    &0&0&0&0&0&0&0&0&$0$&125600&Higgs\\
+Higgs    &0&0&0&0&0&0&0&0&$0$&125350&Higgs\\
 \hline
 \end{tabular}
 \end{center}
@@ -6583,9 +6578,9 @@ p=\frac{4,74\mu}{v_{\rm r}\tan(\theta)}
 \parbox{35mm}{
 \begin{picture}(35,35)
 \put(5,5){\framebox(30,30)[cc]{}}
-\jwline{5}{7.52}{15}{9}
-\jwline{15}{10}{27.97}{23}
-\jwline{15}{18}{35}{35.04}
+\emline{5}{7.52}{0}{15}{9}{1}
+\emline{15}{10}{2}{27.97}{23}{3}
+\emline{15}{18}{4}{35}{35.04}{5}
 \put(16.01,7.97){\makebox(0,0)[lc]{\small RR-Lyrae}}
 \put(23,16){\makebox(0,0)[lc]{\small Type 2}}
 \put(23,27){\makebox(0,0)[rc]{\small Type 1}}
@@ -6890,13 +6885,20 @@ Dosis equivalent   &sievert &Sv  &$\rm J\cdot kg^{-1}$\\
 
 \section*{\center Decimale voorvoegsels}
 \begin{center}
-\begin{tabular}{||lll|lll|lll|lll|lll||}
+\begin{tabular}{||lll|lll||}
 \hline
-yotta&Y&$10^{24}$&giga &G&$10^9$&deci &d &$10^{-1}$   &pico &p&$10^{-12}$\rule{0pt}{11pt}\\
-zetta&Z&$10^{21}$&mega &M&$10^6$&centi&c &$10^{-2}$   &femto&f&$10^{-15}$\\
-exa  &E&$10^{18}$&kilo &k&$10^3$&milli&m &$10^{-3}$   &atto &a&$10^{-18}$\\
-peta &P&$10^{15}$&hecto&h&$10^2$&micro&$\mu$&$10^{-6}$&zepto&z&$10^{-21}$\\
-tera &T&$10^{12}$&deca&da&$10  $&nano &n&$10^{-9}$    &yocto&y&$10^{-24}$\\
+quetta&Q&$10^{30}$&deci  &d &$10^{-1}$\rule{0pt}{11pt}\\
+ronna &R&$10^{27}$&centi &c &$10^{-2}$\\
+yotta &Y&$10^{24}$&milli &m &$10^{-3}$\\
+zetta &Z&$10^{21}$&micro &$\mu$&$10^{-6}$\\
+exa   &E&$10^{18}$&nano  &n&$10^{-9}$\\
+peta  &P&$10^{15}$&pico  &p&$10^{-12}$\\
+tera  &T&$10^{12}$&femto &f&$10^{-15}$\\
+giga  &G&$10^9$   &atto  &a&$10^{-18}$\\
+mega  &M&$10^6$   &zepto &z&$10^{-21}$\\
+kilo  &k&$10^3$   &yocto &y&$10^{-24}$\\
+hecto &h&$10^2$   &ronto &r&$10^{-27}$\\
+deca  &da&$10 $   &quecto&q&$10^{-30}$\\
 \hline
 \end{tabular}
 \end{center}
