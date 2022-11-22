@@ -9,7 +9,7 @@ This, and a Dutch version of this file, can be obtained from the author,
 Johan Wevers\linebreak ({\tt johanw@xs4all.nl}).
 
 It can also be obtained on the WWW. See
-<a href="http://www.xs4all.nl/\~johanw/index.html">http://www.xs4all.nl/\~johanw/index.html</a>,
+<a href="http://www.xs4all.nl/\~johanw/index.html">http://www.xs4all.nl/~johanw/index.html</a>,
 where also Postscript and PDF versions are available.
 
 If you find any errors or have any comments, please let me know. I am always
